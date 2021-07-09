@@ -1,11 +1,12 @@
 const express = require('express')
 const path = require('path');
 const cookieSession = require('cookie-session')
+const connectDB = require('./config/db')
 
 const app = express()
 
 // Connect Database
-// connectDB();
+connectDB()
 
 // // Init Middlware
 // app.use(express.json({ extended: false }))
