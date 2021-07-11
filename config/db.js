@@ -1,14 +1,19 @@
-const config = require('config')
-const user = config.get('user')
-const password = config.get('password')
-const host = config.get('host')
-const port = config.get('port')
-
 const { Sequelize } = require('sequelize')
 
-console.log(user, password, host, port)
+function dbInit() {
+    const config = require('config')
 
-const sequelize = new Sequelize(`postgres://${user}:${password}@${host}:${port}/`)
+    const user = config.get('user')
+    const password = config.get('password')
+    const host = config.get('host')
+    const port = config.get('port')
+
+    res = `postgres://${user}:${password}@${host}:${port}/`
+
+    return res
+}
+
+const sequelize = new Sequelize(dbInit())
 
 async function SpiceConnect() {
     try {
@@ -20,4 +25,5 @@ async function SpiceConnect() {
     }
 }
 
+module.exports = dbInit;
 module.exports = SpiceConnect;
